@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>廖兴广</title>
+	</head>
+	
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+
+	<body>
+		
+		<button onclick="window.location.href='getAllUser'">List All USERS</button>
+		<input type="button" name="function_test" id="getUserById" placeholder="输入查询用户的id" value=""/>
+		<input type="text" name="function_test" id="delUserById" placeholder="输入需要删除的用户id" 	/>
+		<input type="button" onclick="editUser()" name="function_test" id="editUserById" placeholder="修改用户的id" />
+		
+		<tr th:each="user:${users}" class="text-c">
+			<td class="id" th:text="${user.getUid()}"></td>
+				<td ><u th:text="${user.getUname()}" ></u></td>
+				<td th:text="${user.getUsex()}"></td>
+				<td th:text="${user.getUphone()}"></td>
+				<td th:text="${user.getUemail()}"></td>
+				<td th:text="${user.getUaddress()}" class="text-l"></td>
+				<td th:text="${user.getUcreate_time()}"></td>
+			</td>
+		</tr>
+		
+	</body>
+	
+	<script type="text/javascript">
+		/*管理员-编辑*/
+function editUser(){
+
+	layer_show('修改用户信息','SpringBoot测试CURD_edit.html',300,600);
+}
+	</script>
+</html>
